@@ -1,21 +1,23 @@
-# This is the default example
-# customise it as you see fit for your example usage of your module
+variable "vault_mount_path" {
+  type        = string
+  default     = "digitalocean"
+  description = "Path in Vault to the Digital Ocean secrets"
+}
 
-# add provider configurations here, for example:
-# provider "aws" {
-#
-# }
+variable "do_secret" {
+  type        = string
+  description = "Name of the secret in the vault mount for Digital Ocean tokens"
+  default     = "tokens"
+}
+provider "vault" {}
 
-# Declare your backends and other terraform configuration here
-# This is an example for using the consul backend.
-# terraform {
-#   backend "consul" {
-#     path = "test_module/simple"
-#   }
-# }
-
-
+data "vault_kv_secret_v2" "do" {
+  mount = var.vault_mount_path
+  name  = var.do_secret
+}
+provider "digitalocean" {
+  token = data.vault_kv_secret_v2.do.data["terraform"]
+}
 module "example" {
   source = "../../"
-  dummy  = "test"
 }
