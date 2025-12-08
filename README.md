@@ -41,11 +41,12 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [cloudflare_record.headscale](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
+| [cloudflare_dns_record.headscale](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
 | [digitalocean_droplet.headscale](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/droplet) | resource |
 | [digitalocean_reserved_ip.public](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/reserved_ip) | resource |
 | [digitalocean_reserved_ip_assignment.headscale](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/reserved_ip_assignment) | resource |
 | [digitalocean_regions.selected](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/regions) | data source |
+| [digitalocean_ssh_key.headscale](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/ssh_key) | data source |
 | [digitalocean_vpc.selected](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/vpc) | data source |
 
 ## Inputs

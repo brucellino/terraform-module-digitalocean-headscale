@@ -77,14 +77,19 @@ resource "digitalocean_reserved_ip" "public" {
   region = data.digitalocean_regions.selected.regions[0].slug
 }
 
-resource "cloudflare_record" "headscale" {
+resource "cloudflare_dns_record" "headscale" {
   name    = "headscale.hashiatho.me"
+  ttl     = "3600"
   zone_id = "1127728daf6b916a5bba81889088c834"
   # value   = var.lb_enabled ? digitalocean_loadbalancer.public[0].ip : digitalocean_reserved_ip.public[0].ip_address
-  value = digitalocean_reserved_ip.public[0].ip_address
-  type  = "A"
+  content = digitalocean_reserved_ip.public[0].ip_address
+  type    = "A"
   # ttl     = 3600
   proxied = true
+}
+
+data "digitalocean_ssh_key" "headscale" {
+  name = "headscale"
 }
 
 resource "digitalocean_droplet" "headscale" {
@@ -93,6 +98,7 @@ resource "digitalocean_droplet" "headscale" {
   region   = "ams3"
   size     = "s-1vcpu-1gb"
   vpc_uuid = data.digitalocean_vpc.selected.id
+  ssh_keys = [data.digitalocean_ssh_key.headscale.id]
   # user_data = ""
 
 }
