@@ -22,17 +22,16 @@ These examples show how to use the module in your project, and are also use for 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >1.2.0 |
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 3.0 |
-| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >=2.24.0 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | 4.0.4 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 5.0 |
+| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >= 2.24.0 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | 4.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | 3.28.0 |
-| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | 2.24.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | 4.0.4 |
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | 5.14.0 |
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | 2.70.0 |
 
 ## Modules
 
@@ -42,16 +41,19 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [cloudflare_origin_ca_certificate.headscale](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/origin_ca_certificate) | resource |
-| [digitalocean_certificate.headscale](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/certificate) | resource |
-| [digitalocean_loadbalancer.public](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/loadbalancer) | resource |
-| [tls_cert_request.headscale](https://registry.terraform.io/providers/hashicorp/tls/4.0.4/docs/resources/cert_request) | resource |
-| [tls_private_key.headscale](https://registry.terraform.io/providers/hashicorp/tls/4.0.4/docs/resources/private_key) | resource |
+| [cloudflare_record.headscale](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
+| [digitalocean_droplet.headscale](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/droplet) | resource |
+| [digitalocean_reserved_ip.public](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/reserved_ip) | resource |
+| [digitalocean_reserved_ip_assignment.headscale](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/reserved_ip_assignment) | resource |
 | [digitalocean_regions.selected](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/regions) | data source |
+| [digitalocean_vpc.selected](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/vpc) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_lb_enabled"></a> [lb\_enabled](#input\_lb\_enabled) | Should we enable a load balancer? | `bool` | `false` | no |
+| <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | n/a | `string` | `"hashi-at-home"` | no |
 
 ## Outputs
 

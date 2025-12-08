@@ -54,13 +54,12 @@ data "vault_kv_secret_v2" "cloudflare" {
 provider "digitalocean" {
   token = data.vault_kv_secret_v2.do.data["terraform"]
 }
-
 provider "cloudflare" {
-  api_user_service_key = data.vault_kv_secret_v2.cloudflare.data["origin_ca_key"]
-  # api_token = data.vault_kv_secret_v2.cloudflare.data["api_token"]
-  # api_key = data.vault_kv_secret_v2.cloudflare.data["origin_ca_key"]
-  # email   = "brucellino@protonmail.ch"
+  api_token = data.vault_kv_secret_v2.cloudflare.data["headscale_api_token"]
+  # api_user_service_key = data.vault_kv_secret_v2.cloudflare.data["origin_ca_key"]
 }
+
+
 module "example" {
   source = "../../"
 }
