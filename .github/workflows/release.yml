@@ -16,23 +16,19 @@ jobs:
     runs-on: ubuntu-26.04
     steps:
       - name: Checkout code
-        uses: 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' # v6
+        uses: "actions/checkout@v7" # v6
         with:
           fetch-depth: 0
-      - name: Get Consul
-        run: |
-          curl -fSL https://releases.hashicorp.com/consul/1.12.3/consul_1.12.3_linux_amd64.zip \
-          | gunzip -> consul ; chmod u+x consul
+      - name: Setup environmen
+        uses: jdx/mise-action@v4
+        with:
+          install: true
       - name: Start Consul dev server
-        run: ./consul agent -server -dev &
-      - name: Get Terraform
-        run: |
-          curl -fSL https://releases.hashicorp.com/terraform/1.2.3/terraform_1.2.3_linux_amd64.zip \
-          | gunzip -> terraform ; chmod u+x terraform
+        run: consul agent -server -dev &
       - name: Init terraform
-        run: ./terraform -chdir=examples/${{ matrix.example }} init
+        run: terraform -chdir=examples/${{ matrix.example }} init
       - name: Validate terraform
-        run: ./terraform -chdir=examples/${{ matrix.example }} validate
+        run: terraform -chdir=examples/${{ matrix.example }} validate
   release:
     needs:
       - validate
@@ -40,13 +36,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
       - name: Install dependencies
         run: |
           npm install -D '@semantic-release/commit-analyzer' \

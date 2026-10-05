@@ -21,7 +21,7 @@ These examples show how to use the module in your project, and are also use for 
 
 | Name | Version |
 | ---- | ------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >1.2.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.16 |
 | <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 5.0 |
 | <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >= 2.24.0 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | 4.1.0 |

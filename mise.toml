@@ -1,11 +1,4 @@
-[settings]
-python.uv_venv_auto = true
-
-[env]
-_.python.venv = { path = ".venv" }
-
-
 [tools]
-python = "3.14.8"
-terraform = "1.14.3"
-uv = "latest"
+terraform = "1.16"
+consul = "2.0.4"
+prek = "0.5.4"
