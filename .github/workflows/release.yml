@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup environmen
-        uses: jdx/mise-action@v4
+        uses: jdx/mise-action@v5
         with:
           install: true
       - name: Start Consul dev server
